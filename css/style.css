@@ -1,0 +1,90 @@
+body{
+	font-family: 'Quicksand', sans-serif;
+  background-color: white;
+}
+
+.navbar-nav {
+  display: flex;
+  flex-direction: column; // cannot use `inherit` to get the `.navbar`s value
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+  margin-left: 0px;
+  margin-top: 0px;
+  position: fixed;
+
+  .nav-link {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+.navbar-text {
+  display: inline-block;
+  padding-top: $nav-link-padding-y;
+  padding-bottom: $nav-link-padding-y;
+}
+.nav-link{
+	color: black;
+}
+.nav-item{
+  text-align: left;
+}
+.navbar{
+  float: left;
+  margin-left: 30px;
+}
+
+.nav .top{
+  display: flex;
+}
+.top .doc{
+  font-size: 35px;
+}
+.top{
+  margin-bottom: 20px;
+  margin-top: 60px;
+}
+.textdoc{
+  margin-left: 10px;
+}
+#sidenav{
+  max-height: 100%;
+  background-color: #9EA0A1;
+  background-attachment: fixed;
+  height: 655px;
+}
+#btnup{
+
+  width: 150px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  height: 40px;
+}
+
+
+#myFiles, #tar{
+  margin-top: 70px;
+  font-size: 15px;
+}
+
+#cari{
+  margin-left: 400px;
+  margin-top: 30px;
+}
+
+#fotar img{
+  width: 270px;
+  height: 390px;
+}
+
+#tabdata, #tabnsp{
+    overflow-y: scroll; 
+    height: 300px;
+}
+
+
+#footer{
+  background-color: black;
+  color: white;
+}
+
