@@ -163,7 +163,37 @@ $qry= mysqli_query($con,"SELECT * FROM data_taruna");
                                                         <td> '.$row['nama'].'</td>
                                                         <td> '.$row['pangkat'].'</td>
                                                         <td> '.$row['nsp'].'</td>
-                                                        <td></td>
+                                                        <td><a class="nav-link text-center" href="#" data-toggle="modal" data-target="#nsp"><button class=" btn btn-outline-danger"  id="btnsp"><strong>NSP</strong></button></a>
+                                                        <div id="nsp" class="modal fade modal-show">      
+                                                            <div class="modal-dialog">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-body">
+                                                                        <form action="upload.php" method="post" enctype="multipart/form-data">
+                                                                            <div class="radio">
+                                                                                <label><input type="radio" name="optradio">Reward</label>
+                                                                            </div>
+                                                                            <div class="radio">
+                                                                                <label><input type="radio" name="optradio">Punishment</label>
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <label for="ket">Keterangan</label>
+                                                                                <input type="text" class="form-control" id="ket" name="ket">
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <label for="poin">Point</label>
+                                                                                <input type="text" class="form-control" id="poin" name="poin">
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <label for="nama">Nama</label>
+                                                                                <input type="text" class="form-control" id="nama" name="nama">
+                                                                            </div>
+                                                                            <button type="submit" class="btn btn-primary" name="simpan">UPDATE</button>                            
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        </td>
                                                       </tr>';
                                             }
                                           ?>
