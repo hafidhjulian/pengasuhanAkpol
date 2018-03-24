@@ -162,7 +162,7 @@ $qry= mysqli_query($con,"SELECT * FROM data_taruna");
                                                         <td> '.$row['no_ak'].'</td>
                                                         <td> '.$row['nama'].'</td>
                                                         <td> '.$row['pangkat'].'</td>
-                                                        <td> '.$row['nsp'].'</td>
+                                                        <td> '.$row['nsp'].'</td> 
                                                         <td><a class="nav-link text-center" href="#" data-toggle="modal" data-target="#nsp"><button class=" btn btn-outline-danger"  id="btnsp"><strong>NSP</strong></button></a>
                                                         <div id="nsp" class="modal fade modal-show">      
                                                             <div class="modal-dialog">
@@ -170,22 +170,18 @@ $qry= mysqli_query($con,"SELECT * FROM data_taruna");
                                                                     <div class="modal-body">
                                                                         <form action="upload.php" method="post" enctype="multipart/form-data">
                                                                             <div class="radio">
-                                                                                <label><input type="radio" name="optradio">Reward</label>
+                                                                                <label><input type="radio" value="1" name="optradio" id="re" required>Reward</label>
                                                                             </div>
                                                                             <div class="radio">
-                                                                                <label><input type="radio" name="optradio">Punishment</label>
+                                                                                <label><input type="radio" value="0" name="optradio" id="pu" required>Punishment</label>
                                                                             </div>
                                                                             <div class="form-group">
                                                                                 <label for="ket">Keterangan</label>
                                                                                 <input type="text" class="form-control" id="ket" name="ket">
                                                                             </div>
                                                                             <div class="form-group">
-                                                                                <label for="poin">Point</label>
+                                                                                <label id="labelPoin" for="poin">Point</label>
                                                                                 <input type="text" class="form-control" id="poin" name="poin">
-                                                                            </div>
-                                                                            <div class="form-group">
-                                                                                <label for="nama">Nama</label>
-                                                                                <input type="text" class="form-control" id="nama" name="nama">
                                                                             </div>
                                                                             <button type="submit" class="btn btn-primary" name="simpan">UPDATE</button>                            
                                                                         </form>
@@ -195,7 +191,7 @@ $qry= mysqli_query($con,"SELECT * FROM data_taruna");
                                                         </div>
                                                         </td>
                                                       </tr>';
-                                            }
+                                           }
                                           ?>
                                         </tbody>
                                     </table>
@@ -209,3 +205,20 @@ $qry= mysqli_query($con,"SELECT * FROM data_taruna");
 	</body>
 </html>
 
+<script>
+$("input[name='optradio']").click(function() {
+      //$('.radio-default label').text('Set default');
+      
+      if((this).id!="pu"){
+        document.getElementById('labelPoin').innerHTML = 'Penambahan Poin';
+        document.getElementById("labelPoin").style.color = "green";
+        document.getElementById("poin").style.color = "green";
+        
+      }else{
+        document.getElementById('labelPoin').innerHTML = 'Pengurangan Poin';
+        document.getElementById("labelPoin").style.color = "red";
+        document.getElementById("poin").style.color = "red";
+      }
+ });
+
+</script>
