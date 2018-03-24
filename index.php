@@ -103,7 +103,7 @@ $qry= mysqli_query($con,"SELECT * FROM data_taruna");
                                 <h1 class="display-4">Taruna</h1>
                                 <hr>
                                 <div class="row">
-                                    <div class="col-md-2">
+                                    <div class="col-md-3">
                                         <a class="nav-link text-center" href="#" data-toggle="modal" data-target="#upld"><button class=" btn btn-outline-danger"  id="btnup"><strong>Tambah Taruna</strong></button></a>
                                             <div id="upld" class="modal fade modal-show">      
                                                 <div class="modal-dialog">
@@ -129,9 +129,13 @@ $qry= mysqli_query($con,"SELECT * FROM data_taruna");
                                                 </div>
                                             </div>
                                         <form action="import-excel.php" method ="post" enctype="multipart/form-data">
-                                            <p>Untuk mengimport data taruna melalui excel</p>
+                                            <p>Data taruna excel</p>
                                             <input type="file" name="import">
+                                            <br>
+                                            <br>
                                             <input type="submit" class="btn btn-primary" value="submit">
+                                            <br>
+                                            <br>
                                         </form>
                                     </div>
                                     <div class="col-md-4" id="cari">
@@ -159,6 +163,7 @@ $qry= mysqli_query($con,"SELECT * FROM data_taruna");
                                                         <td> '.$row['nama'].'</td>
                                                         <td> '.$row['pangkat'].'</td>
                                                         <td> '.$row['nsp'].'</td>
+                                                        <td></td>
                                                       </tr>';
                                             }
                                           ?>
