@@ -1,7 +1,8 @@
 <?php
 include_once("koneksi.php");
-
+$qry= mysqli_query($con,"SELECT * FROM data_taruna");
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -121,12 +122,17 @@ include_once("koneksi.php");
                                                                     <label for="nama">Nama</label>
                                                                     <input type="text" class="form-control" id="nama" name="nama">
                                                                 </div>
-                                                                <button type="submit" class="btn btn-primary" name="simpan">UPLOAD</button>
+                                                                <button type="submit" class="btn btn-primary" name="simpan">UPLOAD</button>                            
                                                             </form>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
+                                        <form action="import-excel.php" method ="post" enctype="multipart/form-data">
+                                            <p>Untuk mengimport data taruna melalui excel</p>
+                                            <input type="file" name="import">
+                                            <input type="submit" class="btn btn-primary" value="submit">
+                                        </form>
                                     </div>
                                     <div class="col-md-4" id="cari">
                                         <div class="form-group">
@@ -146,82 +152,16 @@ include_once("koneksi.php");
                                           </tr>
                                         </thead>
                                         <tbody>
-                                          <tr>
-                                            <td>A11.2015.09271</td>
-                                            <td>Hafidh Julian Kurniadi</td>
-                                            <td>Brigtutar</td>
-                                            <td></td>
-
-
-                                              <td><a data-target="#det" href="#" data-toggle="modal"><button class="btn">Detail</button></a>
-                                              <div id="det" class="modal fade modal-show">      
-                                                <div class="modal-dialog modal-lg">
-                                                    <div class="modal-content">
-                                                        <div class="modal-body">
-                                                        <div class="row">
-                                                                <div class="col-md-4" id="fotar">
-                                                                    <img src="assets/images/foto1.jpg">
-                                                                </div>
-                                                                <div class="col-md-8">
-                                                                    <div class="table-responsive">
-                                                                        <table class="table">
-                                                                            <tbody>
-                                                                                <tr>
-                                                                                    <td><b>Nama</b></td>
-                                                                                    <td>:</td>
-                                                                                    <td>Hafidh Julian Kurniadi</td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td><b>No. AK</b></td>
-                                                                                    <td>:</td>
-                                                                                    <td>2015.271</td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td><b>Pangkat</b></td>
-                                                                                    <td>:</td>
-                                                                                    <td>Brigtutar</td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td><b>Dosen Wali</b></td>
-                                                                                    <td>:</td>
-                                                                                    <td>Kompol Muryadi S.H, M.H</td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td><b>IPK</b></td>
-                                                                                    <td>:</td>
-                                                                                    <td>3.9</td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td><b>Tempat Tgl lahir</b></td>
-                                                                                    <td>:</td>
-                                                                                    <td>Semarang, 12 Juli 1997</td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td><b>Alamat</b></td>
-                                                                                    <td>:</td>
-                                                                                    <td>Jatingaleh</td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td><b>Email</b></td>
-                                                                                    <td>:</td>
-                                                                                    <td>hafidh6070@gmail.com</td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td><b>Status</b></td>
-                                                                                    <td>:</td>
-                                                                                    <td>Aktif</td>
-                                                                                </tr>
-                                                                            </tbody>
-                                                                        </table>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                </div>
-                                              </td>
-                                          </tr>
+                                          <?php
+                                            while($row=mysqli_fetch_assoc($qry)){
+                                                echo '<tr>
+                                                        <td> '.$row['no_ak'].'</td>
+                                                        <td> '.$row['nama'].'</td>
+                                                        <td> '.$row['pangkat'].'</td>
+                                                        <td> '.$row['nsp'].'</td>
+                                                      </tr>';
+                                            }
+                                          ?>
                                         </tbody>
                                     </table>
                                 </div>

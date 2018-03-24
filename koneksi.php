@@ -3,11 +3,11 @@
 $server = "localhost";
 $user = "root";
 $password = "";
-$database = "akpol_dok";
+$database = "taruna";
 
-$db = mysqli_connect($server, $user, $password, $database);
+$con = mysqli_connect($server, $user, $password, $database);
 
-if( !$db ){
+if( !$con ){
     die("Gagal terhubung dengan database: " . mysqli_connect_error());
 }
 
