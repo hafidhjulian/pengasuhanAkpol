@@ -1,6 +1,6 @@
 <?php
 include_once("koneksi.php");
-$qry= mysqli_query($con,"SELECT * FROM data_taruna");
+
 ?>
 
 <!DOCTYPE html>
@@ -86,8 +86,6 @@ $qry= mysqli_query($con,"SELECT * FROM data_taruna");
                                         <thead>
                                           <tr>
                                             <th>No. AK</th>
-                                            <th>Nama</th>
-                                            <th>Pangkat</th>
                                             <th>Jenis</th>
                                             <th>Tanggal</th>
                                             <th>Keterangan</th>
@@ -96,7 +94,19 @@ $qry= mysqli_query($con,"SELECT * FROM data_taruna");
                                           </tr>
                                         </thead>
                                         <tbody>
-                                          
+                                          <?php
+                                            $qry= mysqli_query($con,"SELECT * FROM history");
+                                            while($row=mysqli_fetch_assoc($qry)){
+                                                echo '<tr>
+                                                        <td> '.$row['no_ak'].'</td>
+                                                        <td> '.$row['jenis'].'</td>
+                                                        <td> '.$row['tanggal'].'</td>
+                                                        <td> '.$row['keterangan'].'</td>
+                                                        <td> '.$row['poin'].'</td>
+                                                        <td> '.$row['nilai_akhir'].'</td>
+
+                                                      <tr>';}
+                                          ?>
                                         </tbody>
                                     </table>
                                 </div>
@@ -159,6 +169,7 @@ $qry= mysqli_query($con,"SELECT * FROM data_taruna");
                                         </thead>
                                         <tbody>
                                           <?php
+                                            $qry= mysqli_query($con,"SELECT * FROM data_taruna");
                                             while($row=mysqli_fetch_assoc($qry)){
                                                 echo '<tr>
                                                         <td> '.$row['no_ak'].'</td>
@@ -175,10 +186,10 @@ $qry= mysqli_query($con,"SELECT * FROM data_taruna");
                                                                             <input type="hidden" name="nilai_sebelum" value='.$row['nsp'].'>
                                                                             <input type="hidden" name="id_siswa" value='.$row['no_ak'].'>
                                                                             <div class="radio">
-                                                                                <label><input type="radio" value="1" name="optradio" id="re" required>Reward</label>
+                                                                                <label><input type="radio" value="Reward" name="optradio" id="re" required>Reward</label>
                                                                             </div>
                                                                             <div class="radio">
-                                                                                <label><input type="radio" value="0" name="optradio" id="pu" required>Punishment</label>
+                                                                                <label><input type="radio" value="Punishment" name="optradio" id="pu" required>Punishment</label>
                                                                             </div>
                                                                             <div class="form-group">
                                                                                 <label for="ket">Keterangan</label>
