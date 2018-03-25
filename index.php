@@ -88,7 +88,9 @@ $qry= mysqli_query($con,"SELECT * FROM data_taruna");
                                             <th>No. AK</th>
                                             <th>Nama</th>
                                             <th>Pangkat</th>
+                                            <th>Jenis</th>
                                             <th>Tanggal</th>
+                                            <th>Keterangan</th>
                                             <th>Poin</th>
                                             <th>N.A</th>
                                           </tr>
@@ -162,7 +164,8 @@ $qry= mysqli_query($con,"SELECT * FROM data_taruna");
                                                         <td> '.$row['no_ak'].'</td>
                                                         <td> '.$row['nama'].'</td>
                                                         <td> '.$row['pangkat'].'</td>
-                                                        <td> '.$row['nsp'].'</td> 
+                                                        <td> '.$row['nsp'].'</td>
+
                                                         <td><a class="nav-link text-center" href="#" data-toggle="modal" data-target="#nsp"><button class=" btn btn-outline-danger"  id="btnsp"><strong>NSP</strong></button></a>
                                                         <div id="nsp" class="modal fade modal-show">      
                                                             <div class="modal-dialog">
