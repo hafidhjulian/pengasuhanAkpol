@@ -169,6 +169,8 @@ $qry= mysqli_query($con,"SELECT * FROM data_taruna");
                                                                 <div class="modal-content">
                                                                     <div class="modal-body">
                                                                         <form action="upload.php" method="post" enctype="multipart/form-data">
+                                                                            <input type="hidden" name="nilai_sebelum" value='.$row['nsp'].'>
+                                                                            <input type="hidden" name="id_siswa" value='.$row['no_ak'].'>
                                                                             <div class="radio">
                                                                                 <label><input type="radio" value="1" name="optradio" id="re" required>Reward</label>
                                                                             </div>
