@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 23, 2018 at 03:04 PM
+-- Generation Time: Mar 25, 2018 at 03:39 AM
 -- Server version: 10.1.22-MariaDB
 -- PHP Version: 7.1.4
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `taruna`
+-- Database: `akpol-pengasuhan`
 --
 
 -- --------------------------------------------------------
@@ -32,18 +32,21 @@ CREATE TABLE `data_taruna` (
   `no_ak` varchar(150) NOT NULL,
   `nama` varchar(150) NOT NULL,
   `pangkat` varchar(100) NOT NULL,
-  `nsp` int(20) NOT NULL
+  `nsp` int(20) NOT NULL,
+  `poin` int(30) NOT NULL,
+  `keterangan` varchar(200) NOT NULL,
+  `jenis` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `data_taruna`
 --
 
-INSERT INTO `data_taruna` (`no_ak`, `nama`, `pangkat`, `nsp`) VALUES
-('A11.2015.09266', 'Abdurahman', 'Mahasiswa', 100),
-('A11.2015.09267', 'Abdurahman', 'Mahasiswa', 100),
-('A11.2015.09268', 'Abdurahman', 'Mahasiswa', 100),
-('A11.2015.09271', 'Abdurahman', 'Mahasiswa', 100);
+INSERT INTO `data_taruna` (`no_ak`, `nama`, `pangkat`, `nsp`, `poin`, `keterangan`, `jenis`) VALUES
+('A11.2015.09266', 'Abdurahman', 'Mahasiswa', 0, 0, '', ''),
+('A11.2015.09267', 'Abdurahman', 'Mahasiswa', 0, 0, '', ''),
+('A11.2015.09268', 'Abdurahman', 'Mahasiswa', 0, 0, '', ''),
+('A11.2015.09271', 'Abdurahman', 'Mahasiswa', 0, 0, '', '');
 
 --
 -- Indexes for dumped tables
