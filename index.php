@@ -14,9 +14,9 @@ include_once ("koneksi.php");
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+        <!-- <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script> -->
+        <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script> -->
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand">
 		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
@@ -87,25 +87,31 @@ include_once ("koneksi.php");
                                           <tr>
                                             <th>No. AK</th>
                                             <th>Jenis</th>
-                                            <th>Tanggal</th>
                                             <th>Keterangan</th>
                                             <th>Poin</th>
-                                            <th>N.A</th>
+                                            <th>Nilai Akhir</th>
+                                            <th>Tanggal</th>
+                                          
                                           </tr>
                                         </thead>
                                         <tbody>
                                           <?php
                                             $qry= mysqli_query($con,"SELECT * FROM history");
                                             while($row=mysqli_fetch_assoc($qry)){
-                                                echo '<tr>
-                                                        <td> '.$row['no_ak'].'</td>
-                                                        <td> '.$row['jenis'].'</td>
-                                                        <td> '.$row['tanggal'].'</td>
-                                                        <td> '.$row['keterangan'].'</td>
-                                                        <td> '.$row['poin'].'</td>
-                                                        <td> '.$row['nilai_akhir'].'</td>
+                                            ?>
+                                                <tr>
+                                                        <td> <?php echo $row['no_ak'];?></td>
+                                                        <td> <?php echo $row['jenis'];?></td>
+                                                        <td> <?php echo $row['keterangan'];?></td>
+                                                        <td> <?php echo $row['poin'];?></td>
+                                                        <td> <?php echo $row['nilai_akhir']; ?></td>
+                                                        <td> <?php echo $row['tanggal']; ?></td>
+                                                       
+                                                        
 
-                                                      <tr>';}
+                                                <tr>
+                                            <?php
+                                            }
                                           ?>
                                         </tbody>
                                     </table>
@@ -171,85 +177,54 @@ include_once ("koneksi.php");
                                           <?php
                                             $qry= mysqli_query($con,"SELECT * FROM data_taruna");
                                             while($row=mysqli_fetch_assoc($qry)){
-                                                echo '<tr>
-                                                        <td> '.$row['no_ak'].'</td>
-                                                        <td> '.$row['nama'].'</td>
-                                                        <td> '.$row['pangkat'].'</td>
-                                                        <td> '.$row['nsp'].'</td>
-                                                        <td> <a href="proses-edit.php?id=$row[no_ak]" class="open" data-toggle="modal" data-target="#ModalEdit"><button class="btn btn-primary">NSP</button></a>
-                                                            <div id="ModalEdit" class="modal fade modal-show">
-                                                            <div class="modal-dialog">
-                                                                <div class="modal-content">
-                                                                    <div class="modal-body">
-                                                                        <form action="proses-edit.php" method="post" enctype="multipart/form-data">
-                                                                            
-                                                                            <div class="radio">
-                                                                                <label><input type="radio" id="re" name="jenis" value="Reward" required>Reward</label><br>
-                                                                                <label><input type="radio" id="pu" name="jenis" value="Punishment" required>Punishment</label>
-                                                                            </div>
-                                                                            <div class="form-group">
-                                                                                <label for="ket">Keterangan</label>
-                                                                                <input type="text" class="form-control" id="ket" name="ket">
-                                                                            </div>
-                                                                            <div class="form-group">
-                                                                                <label for="poin" id="labelPoin">Poin</label>
-                                                                                <input type="text" class="form-control" id="poin" name="poin">
-                                                                            </div>
-                                                                            <button type="submit" class="btn btn-primary" name="simpan">UPLOAD</button>                            
-                                                                        </form>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            </div>
-                                                        
-                                                        </td>
-                                                        </tr>
-                                                        ';}
-                                          ?>
+                                            ?>
+                                                <tr>
+                                                    <td><?php echo $row['no_ak'];?></td>
+                                                    <td><?php echo $row['nama'];?></td>
+                                                    <td><?php echo $row['pangkat']?></td>
+                                                    <td><?php echo $row['nsp']?></td>
+                                                    <td>
+                                                        <a href="#" class="open_modal" id="<?php echo  $row['no_ak']; ?>"><button class="btn btn-primary">NSP</button></a>
+                                                    </td>
+                                                </tr>
+                                                <?php
+                                            }
+                                            ?>
                                         </tbody>
                                     </table>
                                 </div>
+                                
                             </div>
                             
                         </div>
                     </div>
                 </div>
         </div>
+       <!-- Modal Popup untuk Edit--> 
+       <div id="ModalEdit" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+       </div>
+
+        <!-- Javascript untuk popup modal Edit -->
+        <script type="text/javascript">
+        $(document).ready(function () {
+        $(".open_modal").click(function(e) {
+            var m = $(this).attr("id");
+                $.ajax({
+                        url: "modal-edit.php",
+                        type: "GET",
+                        data : {no_ak: m,},
+                        success: function (ajaxData){
+                        $("#ModalEdit").html(ajaxData);
+                        $("#ModalEdit").modal('show',{backdrop: 'true'});
+                    }
+                    });
+                });
+            });
+        </script>
 	</body>
 </html>
 
 
 
-<!-- <script type="text/javascript">
-   $(document).ready(function () {
-   $(".open").click(function(e) {
-      var m = $(this).attr("id");
-		   $.ajax({
-    			   url: "modal_edit.php",
-    			   type: "GET",
-    			   data : {no_ak: m,},
-    			   success: function (ajaxData){
-      			   $("#ModalEdit").html(ajaxData);
-      			   $("#ModalEdit").modal('show',{backdrop: 'true'});
-      		   }
-    		   });
-        });
-      });
-</script> -->
-<script>
-$("input[name='optradio']").click(function() {
-      //$('.radio-default label').text('Set default');
-      
-      if((this).id!="pu"){
-        document.getElementById('labelPoin').innerHTML = 'Penambahan Poin';
-        document.getElementById("labelPoin").style.color = "green";
-        document.getElementById("poin").style.color = "green";
-        
-      }else{
-        document.getElementById('labelPoin').innerHTML = 'Pengurangan Poin';
-        document.getElementById("labelPoin").style.color = "red";
-        document.getElementById("poin").style.color = "red";
-      }
- });
 
-</script>
