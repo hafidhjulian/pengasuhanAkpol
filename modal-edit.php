@@ -35,7 +35,7 @@
 <?php };?>
 
 <script>
-$("input[name='optradio']").click(function() {
+$("input[name='jenis']").click(function() {
       //$('.radio-default label').text('Set default');
       
       if((this).id!="pu"){
