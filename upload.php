@@ -8,7 +8,7 @@ if(isset($_POST['simpan']))
 	$tanggal= date("Y-m-d h:i:s");
 	$nilai_sebelum=$_POST['nilai_sebelum'];
 	$jenis=$_POST['optradio'];
-	$id_siswa=$_POST['id_siswa'];
+	$no_ak=$_POST['no_ak'];
 
 
 	// if($jenis==1){
@@ -19,18 +19,11 @@ if(isset($_POST['simpan']))
 	//   $nsp=round($nsp,2);
 
 		
-			$query = mysqli_query($con, "INSERT INTO history (
-				no_ak, 
-				jenis, 
-				keterangan,
-				poin, 
-				tanggal
-			) VALUES (
-				'$id_siswa', 
-				'$jenis', 
-				'$ket',
-				'$poin',
-				'$tanggal')");
+			$query = mysqli_query($con, "UPDATE history SET
+				jenis='$jenis', 
+				keterangan='$ket',
+				poin='$poin', 
+				tanggal='$tanggal' WHERE no_ak='$no_ak'");
 
 				if( $query ) {
 					// kalau berhasil alihkan ke halaman index.php dengan status=sukses

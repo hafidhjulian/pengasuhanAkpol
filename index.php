@@ -1,5 +1,5 @@
 <?php
-include_once("koneksi.php");
+include_once ("koneksi.php");
 
 ?>
 
@@ -176,38 +176,35 @@ include_once("koneksi.php");
                                                         <td> '.$row['nama'].'</td>
                                                         <td> '.$row['pangkat'].'</td>
                                                         <td> '.$row['nsp'].'</td>
-
-                                                        <td><a class="nav-link text-center" href="#" data-toggle="modal" data-target="#nsp"><button class=" btn btn-outline-danger"  id="btnsp"><strong>NSP</strong></button></a>
-                                                        <div id="nsp" class="modal fade modal-show">      
+                                                        <td> <a href="proses-edit.php?id=$row[no_ak]" class="open" data-toggle="modal" data-target="#ModalEdit"><button class="btn btn-primary">NSP</button></a>
+                                                            <div id="ModalEdit" class="modal fade modal-show">
                                                             <div class="modal-dialog">
                                                                 <div class="modal-content">
                                                                     <div class="modal-body">
-                                                                        <form action="upload.php" method="post" enctype="multipart/form-data">
-                                                                            <input type="hidden" name="nilai_sebelum" value='.$row['nsp'].'>
-                                                                            <input type="hidden" name="id_siswa" value='.$row['no_ak'].'>
+                                                                        <form action="proses-edit.php" method="post" enctype="multipart/form-data">
+                                                                            
                                                                             <div class="radio">
-                                                                                <label><input type="radio" value="Reward" name="optradio" id="re" required>Reward</label>
-                                                                            </div>
-                                                                            <div class="radio">
-                                                                                <label><input type="radio" value="Punishment" name="optradio" id="pu" required>Punishment</label>
+                                                                                <label><input type="radio" id="re" name="jenis" value="Reward" required>Reward</label><br>
+                                                                                <label><input type="radio" id="pu" name="jenis" value="Punishment" required>Punishment</label>
                                                                             </div>
                                                                             <div class="form-group">
                                                                                 <label for="ket">Keterangan</label>
                                                                                 <input type="text" class="form-control" id="ket" name="ket">
                                                                             </div>
                                                                             <div class="form-group">
-                                                                                <label id="labelPoin" for="poin">Point</label>
+                                                                                <label for="poin" id="labelPoin">Poin</label>
                                                                                 <input type="text" class="form-control" id="poin" name="poin">
                                                                             </div>
-                                                                            <button type="submit" class="btn btn-primary" name="simpan">UPDATE</button>                            
+                                                                            <button type="submit" class="btn btn-primary" name="simpan">UPLOAD</button>                            
                                                                         </form>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
+                                                            </div>
+                                                        
                                                         </td>
-                                                      </tr>';
-                                           }
+                                                        </tr>
+                                                        ';}
                                           ?>
                                         </tbody>
                                     </table>
@@ -221,6 +218,24 @@ include_once("koneksi.php");
 	</body>
 </html>
 
+
+
+<!-- <script type="text/javascript">
+   $(document).ready(function () {
+   $(".open").click(function(e) {
+      var m = $(this).attr("id");
+		   $.ajax({
+    			   url: "modal_edit.php",
+    			   type: "GET",
+    			   data : {no_ak: m,},
+    			   success: function (ajaxData){
+      			   $("#ModalEdit").html(ajaxData);
+      			   $("#ModalEdit").modal('show',{backdrop: 'true'});
+      		   }
+    		   });
+        });
+      });
+</script> -->
 <script>
 $("input[name='optradio']").click(function() {
       //$('.radio-default label').text('Set default');
