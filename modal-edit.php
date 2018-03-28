@@ -11,6 +11,7 @@
                 <form action="proses-edit.php" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <input type="hidden" name="no_ak"  class="form-control" value="<?php echo $dat['no_ak']; ?>" />
+                        <input type="hidden" name="nilai_sebelum"  class="form-control" value="<?php echo $dat['nsp']; ?>" />
                     </div>
                     <div class="radio">
                         <label><input type="radio" id="re" name="jenis" value="Reward" required>Reward</label><br>
